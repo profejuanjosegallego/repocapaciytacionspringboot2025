@@ -1,9 +1,7 @@
 package com.example.ProyectoSpringboot.modelos;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -17,6 +15,11 @@ public class Pedido {
     private LocalDate fecha;
     private Double monto;
     private String descripcion;
+
+    @ManyToOne
+    @JoinColumn(name="fk_usuario", referencedColumnName = "id")
+    @JsonBackReference
+    private Usuario usuario;
 
     public Pedido() {
     }

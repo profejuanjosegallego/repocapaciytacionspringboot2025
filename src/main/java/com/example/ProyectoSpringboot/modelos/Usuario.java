@@ -1,8 +1,10 @@
 package com.example.ProyectoSpringboot.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +21,10 @@ public class Usuario {
     private String telefono;
     @Column(name = "city", length = 30)
     private String ciudad;
+
+    @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
 
     public Usuario() {
     }

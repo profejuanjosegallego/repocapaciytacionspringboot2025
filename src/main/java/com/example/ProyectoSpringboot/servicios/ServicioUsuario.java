@@ -54,6 +54,14 @@ public class ServicioUsuario {
     }
 
     //buscar usuario nombre ***
+    public List<Usuario> buscarUsuariosNombre(String nombres) throws Exception{
+        try{
+            return this.iUsuarioRepositorio.findByNombres(nombres);
+
+        }catch(Exception error){
+            throw new Exception(error.getMessage());
+        }
+    }
 
     //modificarUsuario
     public Usuario modificarUsuario(Integer id, Usuario datosNuevosUsuario) throws Exception{
